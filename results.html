@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Results - Eco Products</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="results-section">
+    <h2>Search Results</h2>
+    <div id="results-container" class="results-grid"></div>
+  </section>
+
+  <script>
+    const ecoProducts = {
+      shampoo: [
+        {
+          name: "Plaine Products Eco Shampoo",
+          description: "Refillable, vegan, sulfate-free, aluminum bottle.",
+          images: ["images/shampoo1.png"],
+          link: "https://www.plaineproducts.com/"
+        },
+        {
+          name: "Ethique Solid Shampoo Bar",
+          description: "Plastic-free, zero waste, cruelty-free.",
+          images: ["images/shampoo2.png"],
+          link: "https://ethiqueworld.com/"
+        },
+        {
+          name: "Lush Shampoo Bar",
+          description: "All-natural, vegan, no plastic packaging.",
+          images: ["images/shampoo3.png"],
+          link: "https://www.lush.ca/"
+        },
+        {
+          name: "Rahua Classic Shampoo",
+          description: "Sulfate-free, cruelty-free, organic shampoo.",
+          images: ["images/shampoo4.png"],
+          link: "https://rahuabeauty.com/"
+        }
+      ],
+      toothpaste: [
+        {
+          name: "Bite Toothpaste Bits",
+          description: "Plastic-free, travel-friendly, vegan bits.",
+          images: ["images/toothpaste1.png"],
+          link: "https://bitetoothpastebits.com/"
+        },
+        {
+          name: "Georganics Natural Toothpaste",
+          description: "Glass jar packaging, mineral-rich, fluoride-free.",
+          images: ["images/toothpaste2.png"],
+          link: "https://georganics.com/"
+        },
+        {
+          name: "Radius Organic Toothpaste",
+          description: "Organic, fluoride-free, non-GMO.",
+          images: ["images/toothpaste3.png"],
+          link: "https://radiusgarden.com/"
+        },
+        {
+          name: "Davids Premium Natural Toothpaste",
+          description: "Sustainable packaging, natural ingredients.",
+          images: ["images/toothpaste4.png"],
+          link: "https://davids-toothpaste.com/"
+        }
+      ],
+      household: [
+        {
+          name: "Blueland All-Purpose Cleaner",
+          description: "Plastic-free, plant-based, reusable bottles.",
+          images: ["images/household1.png"],
+          link: "https://blueland.com/"
+        },
+        {
+          name: "Grove Co. Tub & Tile Cleaner",
+          description: "Vegan, cruelty-free, recyclable packaging.",
+          images: ["images/household2.png"],
+          link: "https://www.grove.co/"
+        }
+      ],
+      conditioner: [
+    {
+      name: "Plaine Products Eco Conditioner",
+      description: "Refillable, vegan, sulfate-free, aluminum bottle.",
+      images: ["images/conditioner1.png"],
+      link: "https://www.plaineproducts.com/"
+    },
+    {
+      name: "Ethique Conditioner Bar",
+      description: "Plastic-free, zero waste, cruelty-free.",
+      images: ["images/conditioner2.png"],
+      link: "https://ethiqueworld.com/"
+    },
+    {
+      name: "Lush Conditioner Bar",
+      description: "All-natural, vegan, no plastic packaging.",
+      images: ["images/conditioner3.png"],
+      link: "https://www.lush.ca/"
+    },
+    {
+      name: "Rahua Conditioner",
+      description: "Sulfate-free, cruelty-free, organic conditioner.",
+      images: ["images/conditioner4.png"],
+      link: "https://rahua.com/"
+    }
+  ],
+  bodyWash: [
+    {
+      name: "Dr. Bronner’s Castile Liquid Soap",
+      description: "Organic, biodegradable, multi-purpose soap.",
+      images: ["images/bodywash1.png"],
+      link: "https://www.drbronner.com/"
+    },
+    {
+      name: "Ethique Body Wash Bar",
+      description: "Plastic-free, zero waste, cruelty-free.",
+      images: ["images/bodywash2.png"],
+      link: "https://ethiqueworld.com/"
+    },
+    {
+      name: "Lush Body Wash",
+      description: "All-natural, vegan, no plastic packaging.",
+      images: ["images/bodywash3.png"],
+      link: "https://www.lush.ca/"
+    },
+    
+  ],
+  
+  deodorant: [
+    {
+      name: "Native Deodorant",
+      description: "Aluminum-free, paraben-free, cruelty-free.",
+      images: ["images/deodorant1.png"],
+      link: "https://www.nativecos.com/"
+    },
+    {
+      name: "Schmidt's Natural Deodorant",
+      description: "Plant-based, aluminum-free, eco-friendly packaging.",
+      images: ["images/deodorant2.png"],
+      link: "https://www.schmidts.com/"
+    },
+    {
+      name: "Ethique Deodorant Bar",
+      description: "Plastic-free, zero waste, cruelty-free.",
+      images: ["images/deodorant3.png"],
+      link: "https://ethiqueworld.com/"
+    },
+    {
+      name: "Kopari Coconut Deodorant",
+      description: "Aluminum-free, vegan, recyclable packaging.",
+      images: ["images/deodorant4.png"],
+      link: "https://koparibeauty.com/"
+    }
+  ],
+  moisturizer: [
+    {
+      name: "CeraVe Daily Moisturizing Lotion",
+      description: "Fragrance-free, non-comedogenic, eco-friendly packaging.",
+      images: ["images/moisturizer1.png"],
+      link: "https://www.cerave.com/"
+    },
+    {
+      name: "Neutrogena Hydro Boost Gel Cream",
+      description: "Oil-free, non-comedogenic, recyclable packaging.",
+      images: ["images/moisturizer2.png"],
+      link: "https://www.neutrogena.com/"
+    },
+    
+    {
+      name: "Kiehl's Ultra Facial Cream",
+      description: "Hydrating, eco-friendly packaging, paraben-free.",
+      images: ["images/moisturizer4.png"],
+      link: "https://www.kiehls.com/"
+    }
+  ],
+  sunscreen: [
+    {
+      name: "Neutrogena Ultra Sheer Sunscreen",
+      description: "Broad-spectrum SPF, lightweight, eco-friendly packaging.",
+      images: ["images/sunscreen1.png"],
+      link: "https://www.neutrogena.com/"
+    },
+    {
+      name: "Supergoop! Unseen Sunscreen",
+      description: "SPF 40, reef-safe, recyclable packaging.",
+      images: ["images/sunscreen2.png"],
+      link: "https://supergoop.com/"
+    },
+    {
+      name: "Badger SPF Sunscreen Cream",
+      description: "Organic, reef-safe, biodegradable packaging.",
+      images: ["images/sunscreen3.png"],
+      link: "https://www.badgerbalm.com/"
+    },
+    {
+      name: "Banana Boat Ultra Sport Sunscreen",
+      description: "SPF 50, water-resistant, recyclable packaging.",
+      images: ["images/sunscreen4.png"],
+      link: "https://www.bananaboat.com/"
+    }
+  ],
+  facewash: [
+    {
+      name: "CeraVe Hydrating Facial Cleanser",
+      description: "Fragrance-free, non-comedogenic, eco-friendly packaging.",
+      images: ["images/facewash1.png"],
+      link: "https://www.cerave.com/"
+    },
+    {
+      name: "Neutrogena Oil-Free Acne Wash",
+      description: "Salicylic acid, non-comedogenic, recyclable packaging.",
+      images: ["images/facewash2.png"],
+      link: "https://www.neutrogena.com/"
+    },
+    {
+      name: "Ethique Face Wash Bar",
+      description: "Plastic-free, zero waste, cruelty-free.",
+      images: ["images/facewash3.png"],
+      link: "https://ethiqueworld.com/"
+    },
+    {
+      name: "Live Simply",
+      description: "Gentle, fragrance-free, homemade,natural.",
+      images: ["images/facewash4.png"],
+      link: "https://livesimply.me/"
+    }
+  ],
+  razor: [
+    {
+      name: "Harry's Razor",
+      description: "German-engineered blades, recyclable packaging.",
+      images: ["images/razor1.png"],
+      link: "https://www.harrys.com/"
+    },
+    {
+      name: "Billie Razor",
+      description: "Nickel-free blades, eco-friendly packaging.",
+      images: ["images/razor2.png"],
+      link: "https://www.mybillie.com/"
+    },
+    
+    {
+      name: "BIC Simply Soleil Razor",
+      description: "Triple blade, recyclable packaging.",
+      images: ["images/razor4.png"],
+      link: "https://www.bic.com/"
+    }
+  ],
+  hairBrush: [
+    {
+      name: "Wet Brush Pro",
+      description: "Detangling, eco-friendly materials.",
+      images: ["images/hairbrush1.png"],
+      link: "https://www.thewetbrush.com/"
+    },
+    {
+      name: "Tangle Teezer Original",
+      description: "Detangling, recyclable packaging.",
+      images: ["images/hairbrush2.png"],
+      link: "https://www.tangleteezer.com/"
+    },
+    {
+      name: "Bürstenhaus Redecker Hair Brush",
+      description: "Natural bristles, sustainable wood handle.",
+      images: ["images/hairbrush3.png"],
+      link: "https://www.redecker.de/"
+    },
+    {
+      name: "Mason Pearson Hair Brush",
+      description: "Handmade, sustainable materials.",
+      images: ["images/hairbrush4.png"],
+      link: "https://www.masonpearson.com/"
+    }
+  ],
+  handCream: [
+    {
+      name: "L'Occitane Almond Milk Concentrate",
+      description: "Hydrating, eco-friendly packaging.",
+      images: ["images/handcream1.png"],
+      link: "https://www.loccitane.com/"
+    },
+    {
+      name: "Neutrogena Norwegian Formula Hand Cream",
+      description: "Fragrance-free, recyclable packaging.",
+      images: ["images/handcream2.png"],
+      link: "https://www.neutrogena.com/"
+    },
+  ]
+    }
+    
+    function displayResults() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const query = urlParams.get('query')?.toLowerCase() || '';
+      const container = document.getElementById('results-container');
+      container.innerHTML = '';
+      let found = false;
+
+      Object.keys(ecoProducts).forEach(category => {
+        ecoProducts[category].forEach(product => {
+          const match = product.name.toLowerCase().includes(query) || 
+                        product.description.toLowerCase().includes(query) ||
+                        category.includes(query);
+          if (match) {
+            const card = document.createElement('div');
+            card.classList.add('product-card');
+            card.innerHTML = `
+              <img src="${product.images[0]}" alt="${product.name}" class="product-image">
+              <h3>${product.name}</h3>
+              <p>${product.description}</p>
+              <a href="${product.link}" target="_blank">
+                <button class="buy-btn">View Product</button>
+              </a>
+            `;
+            container.appendChild(card);
+            found = true;
+          }
+        });
+      });
+
+      if (!found) {
+        container.innerHTML = `<p class="no-results">No matching products found. Try a different search term.</p>`;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', displayResults);
+  </script>
+</body>
+</html>
